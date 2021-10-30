@@ -25,8 +25,8 @@ import com.codegoogle.tcpmon.bookmark.BookmarkManager;
 public class Main {
 
   /**
-   * parses the command line arguments and creates a {@link Configuration}
-   * instance. 
+   * parses the command line arguments and creates a {@link Configuration} instance.
+   *
    * @param args Command line arguments
    * @return Configuration - tcpmon app configuration details.
    */
@@ -43,22 +43,26 @@ public class Main {
 
     while (i < args.length && args[i].startsWith("-")) {
       arg = args[i++];
-      if (arg.equals("-localport")) {
-        if (i < args.length) {
-          configuration.setLocalPort(args[i++]);
-        }
-      } else if (arg.equals("-remotehost")) {
-        if (i < args.length) {
-          configuration.setRemoteHost(args[i++]);
-        }
-      } else if (arg.equals("-debuglevel")) {
-        if (i < args.length) {
-          int debugLevel = Integer.parseInt(args[i++]);
-          if (debugLevel >= Debug.FULL_DEBUG) {
-            debugLevel = Debug.FULL_DEBUG;
+      switch (arg) {
+        case "-localport":
+          if (i < args.length) {
+            configuration.setLocalPort(args[i++]);
           }
-          configuration.setDebugLevel(debugLevel);
-        }
+          break;
+        case "-remotehost":
+          if (i < args.length) {
+            configuration.setRemoteHost(args[i++]);
+          }
+          break;
+        case "-debuglevel":
+          if (i < args.length) {
+            int debugLevel = Integer.parseInt(args[i++]);
+            if (debugLevel >= Debug.FULL_DEBUG) {
+              debugLevel = Debug.FULL_DEBUG;
+            }
+            configuration.setDebugLevel(debugLevel);
+          }
+          break;
       }
       if (arg.equals("-autostart")) {
         configuration.setAutoStart(true);

@@ -29,7 +29,7 @@ import com.codegoogle.tcpmon.Debug;
 
 /**
  * This class handles bookmarks by reading and writing a file on the filesystem.
- * <p/>
+ *
  * <p>This implementation does not try to be fancy, and read/write from/to FS
  * every time the bookmark list is accessed.  It currently is sufficient, but
  * can be revisited in the future.</p>
